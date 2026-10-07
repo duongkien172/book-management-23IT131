@@ -1,0 +1,19 @@
+<h1>Book Management</h1>
+{{#if flash}}<p class="{{flash.type}}">{{flash.msg}}</p>{{/if}}
+<p>Session {{sessionId}}... - visits: {{views}}</p>
+
+<form method="POST" action="/books">
+  <input name="code" placeholder="Code (starts with 131)" required>
+  <input name="title" placeholder="Title" required>
+  <input name="author" placeholder="Author" required>
+  <input name="price" type="number" step="0.01" placeholder="Price" required>
+  <button>Add book</button>
+</form>
+
+<table>
+ <tr><th>Code</th><th>Title</th><th>Author</th><th>Price</th><th>VAT</th><th>After tax</th></tr>
+ {{#each books}}
+ <tr><td>{{code}}</td><td>{{title}}</td><td>{{author}}</td>
+     <td>{{price}}</td><td>{{vatPercent}}%</td><td>{{priceAfterTax}}</td></tr>
+ {{/each}}
+</table>
